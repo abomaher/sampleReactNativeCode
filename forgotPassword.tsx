@@ -20,8 +20,8 @@ export default function forgotPassword() {
   async function doForgotPassword() {
     // Validate the form data
     if (!email) {
-      Alert.alert("خطأ", "يجب اضافة جميع الحقول!", [
-        { text: "حاضر", onPress: () => console.log(error) },
+      Alert.alert("Error", "Must Be add all fileds", [
+        { text: "OK", onPress: () => console.log(error) },
       ]);
     } else {
       // Make the call to API to send login information
@@ -36,12 +36,12 @@ export default function forgotPassword() {
       });
 
       if (!response.ok) {
-        Alert.alert("خطأ", await response.json(), [
-          { text: "حاضر", onPress: () => console.log(error) },
+        Alert.alert("Error", await response.json(), [
+          { text: "OK", onPress: () => console.log(error) },
         ]);
       } else {
         Alert.alert("", await response.json(), [
-          { text: "تسجيل الدخول", onPress: () => router.navigate("/login") },
+          { text: "Login", onPress: () => router.navigate("/login") },
         ]);
       }
     }
@@ -49,11 +49,11 @@ export default function forgotPassword() {
 
   return (
     <SafeAreaView>
-      <Text style={styles.paragraph}>استعادة بيانات الدخول</Text>
+      <Text style={styles.paragraph}>Forgot Password</Text>
 
       <View style={styles.root}>
         <View>
-          <Text style={styles.textInput}>البريد الالكتروني</Text>
+          <Text style={styles.textInput}>Email</Text>
           <TextInput
             style={styles.input}
             placeholder=""
@@ -67,7 +67,7 @@ export default function forgotPassword() {
               style={styles.button}
               onPress={() => doForgotPassword()}
             >
-              <Text style={styles.textColorWhite}>ارسال كلمة المرور</Text>
+              <Text style={styles.textColorWhite}>Send login information</Text>
             </TouchableOpacity>
           </View>
 
@@ -78,7 +78,7 @@ export default function forgotPassword() {
                   style={styles.textColorBrand}
                   onPress={() => router.navigate("/login")}
                 >
-                  العودة لتسجيل الدخول
+                  Back to login page
                 </Text>
               </TouchableOpacity>
             </View>
